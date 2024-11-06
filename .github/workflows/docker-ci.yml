@@ -1,0 +1,40 @@
+name: Docker CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build and start containers
+        run: |
+          docker-compose up --build -d
+
+      - name: Wait for test results
+        run: sleep 10
+
+      - name: Check test results
+        run: |
+          if docker-compose exec tester test -f /output/succeeded; then
+            echo "Tests succeeded"
+            echo "succeeded" > artifact.txt
+          else
+            echo "Tests failed"
+            echo "fail" > artifact.txt
+          fi
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: result
+          path: artifact.txt
