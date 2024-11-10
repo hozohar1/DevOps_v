@@ -1,16 +1,16 @@
-# השתמש באובונטו כאימג' בסיסי
+# Use Ubuntu as the base image
 FROM ubuntu:latest
 
-# התקן את Nginx
+# Install Nginx
 RUN apt-get update && \
     apt-get install -y nginx && \
     rm -rf /var/lib/apt/lists/*
 
-# העתק את הקובץ nginx.conf למיקום המתאים
+# Copy nginx.conf to custom configuration 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# חשוף את שני הפורטים עבור שני השרתים
+# Expose the two ports for the two servers
 EXPOSE 8080 8081
 
-# הפעל את Nginx
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
