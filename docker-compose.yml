@@ -16,7 +16,7 @@ services:
     depends_on:
       - nginx
     volumes:
-      - output:/output
+      - ./output:/output  # Maps a local folder to the container's output directory
 
 volumes:
   output:
