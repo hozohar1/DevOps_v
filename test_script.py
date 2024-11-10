@@ -13,11 +13,11 @@ def check_server(url, expected_status):
         print(f"Failed to connect to {url}: {e}")
         return False
 
-# בדוק את שני השרתים
+# Check both servers
 server1 = check_server("http://nginx:8080", 200)
 server2 = check_server("http://nginx:8081", 404)
 
-# יצא קוד בהתאם לתוצאות הבדיקה
+# Exit code based on the test results
 if server1 and server2:
     with open("/output/succeeded", "w") as f:
         f.write("All tests passed")
