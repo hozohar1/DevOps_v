@@ -11,3 +11,8 @@ Home assignment for DevOps Engineer - Intern
 2. **קונטיינר בדיקות**:
    - מבצע בדיקות HTTP על שני הקצוות בעזרת ספריית `requests` של Python.
    - אם השרת ב-port 8080 מחזיר קוד סטטוס 200 והשרת ב-port 8081 מחזיר קוד סטטוס 404, הבדיקה נחשבת להצלחה.
+     הרצתי פקודה docker-compose up --build
+
+![Uploading image.png…]()
+
+
