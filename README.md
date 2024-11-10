@@ -1,7 +1,7 @@
 # F5_DevOps
 Home assignment for DevOps Engineer - Intern
 
-הפרויקט כולל שני קונטיינרים ב-Docker שמנוהלים באמצעות Docker Compose:
+המשימה כוללת שני קונטיינרים ב-Docker שמנוהלים באמצעות Docker Compose:
 
 1. **קונטיינר Nginx**: 
    - מקשיב לשני פורטים: 8080 ו-8081.
