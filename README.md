@@ -1,5 +1,6 @@
 # F5_DevOps
 Home assignment for DevOps Engineer - Intern
+
 <div dir="rtl">
 המשימה כוללת שני קונטיינרים ב-Docker שמנוהלים באמצעות Docker Compose:
 
@@ -15,6 +16,3 @@ Home assignment for DevOps Engineer - Intern
 </div>
 
 ![image](https://github.com/user-attachments/assets/2010c714-03dc-4cc0-a7a2-9a4408937e29)
-
-
-
