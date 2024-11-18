@@ -21,8 +21,9 @@ server2 = check_server("http://nginx:8081", 404)
 if server1 and server2:
     with open("/output/succeeded", "w") as f:
         f.write("All tests passed")
-    exit(0)
+    #exit(0)
 else:
     with open("/output/fail", "w") as f:
         f.write("Some tests failed")
-    exit(1)
+    #exit(1)
+input("press enter")
