@@ -13,6 +13,8 @@ Home assignment for DevOps Engineer - Intern
    - מבצע בדיקות HTTP על שני הקצוות בעזרת ספריית `requests` של Python.
    - אם השרת ב-port 8080 מחזיר קוד סטטוס 200 והשרת ב-port 8081 מחזיר קוד סטטוס 404, הבדיקה נחשבת להצלחה.
 
+הרצת **docker-compose up --build**
+
 </div>
 
 ![image](https://github.com/user-attachments/assets/2010c714-03dc-4cc0-a7a2-9a4408937e29)
