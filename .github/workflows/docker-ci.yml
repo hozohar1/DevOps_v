@@ -1,50 +1,52 @@
-name: Docker CI
+name: Docker CI # Define the name of the GitHub Actions workflow
 
-on:
-  push:
+on: 
+  push: # Trigger the workflow on a push event
     branches:
-      - main
+      - main # Only trigger when pushing to the "main" branch
 
 jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
+  build-and-test: # Define a job called "build-and-test"
+    runs-on: ubuntu-latest # Specify the virtual environment for the job
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3 
+      - name: Checkout repository # Step to fetch the repository
+        uses: actions/checkout@v3 # Use the GitHub Action to check out the code from the repository
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2  
+      - name: Set up Docker Buildx # Step to set up Docker Buildx, a builder for building multi-platform Docker images
+        uses: docker/setup-buildx-action@v2 # Use the official Docker Buildx GitHub Action
 
-      - name: Install Docker Compose
+      - name: Install Docker Compose # Install Docker Compose manually
         run: |
+          # Download the latest version of Docker Compose and make it executable
           sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
           sudo chmod +x /usr/local/bin/docker-compose
 
-      - name: Check Docker Compose
-        run: docker-compose --version
+      - name: Check Docker Compose # Verify that Docker Compose is installed
+        run: docker-compose --version # Print the installed version of Docker Compose
 
-      - name: Build and start Nginx container
-        run: docker-compose up -d nginx
+      - name: Build and start Nginx container # Build the images and start the Nginx container
+        run: docker-compose up -d nginx # Use Docker Compose to run the "nginx" service in detached mode
 
-      - name: Run tests in tester container
-        run: docker-compose run --rm tester
+      - name: Run tests in tester container # Run the tests in the tester container
+        run: docker-compose run --rm tester # Execute the "tester" service, removing the container after it exits
 
-      - name: Check test results
+      - name: Check test results # Check if the tests passed or failed
         run: |
+          # Check if the "succeeded" file exists to determine the test results
           if [ -f output/succeeded ]; then
-            echo "Tests succeeded"
-            echo "succeeded" > artifact.txt
+            echo "Tests succeeded" # Log success
+            echo "succeeded" > artifact.txt # Create an artifact file indicating success
           else
-            echo "Tests failed"
-            echo "fail" > artifact.txt
+            echo "Tests failed" # Log failure
+            echo "fail" > artifact.txt # Create an artifact file indicating failure
           fi
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3  
+      - name: Upload artifact # Upload the result as an artifact to GitHub
+        uses: actions/upload-artifact@v3 # Use the GitHub Action to upload artifacts
         with:
-          name: result
-          path: artifact.txt
+          name: result # Name the artifact "result"
+          path: artifact.txt # Specify the path to the artifact file
 
-      - name: Cleanup
-        run: docker-compose down
+      - name: Cleanup # Clean up resources after the workflow completes
+        run: docker-compose down # Stop and remove all containers, networks, and volumes created by Docker Compose
