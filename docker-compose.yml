@@ -1,22 +1,22 @@
-version: '3'
+version: '3' # The version of the Docker Compose file format
 
-services:
-  nginx:
-    build:
-      context: .
-      dockerfile: nginx.Dockerfile
-    ports:
-      - "8080:8080"
-      - "8081:8081"
+services: # Define the services (containers) to run
+  nginx: # Service name for the Nginx container
+    build: # Build configuration for the Nginx service
+      context: . # Specify the build context as the current directory
+      dockerfile: nginx.Dockerfile # Specify the Dockerfile to build the Nginx image
+    ports: # Map ports between the host and the container
+      - "8080:8080" # Map port 8080 on the host to port 8080 in the container
+      - "8081:8081" # Map port 8081 on the host to port 8081 in the container
 
-  tester:
-    build:
-      context: .
-      dockerfile: test.Dockerfile
-    depends_on:
-      - nginx
-    volumes:
-      - ./output:/output  # Maps a local folder to the container's output directory
+  tester: # Service name for the testing container
+    build: 
+      context: . 
+      dockerfile: test.Dockerfile # Specify the Dockerfile to build the tester image
+    depends_on: # Ensure the tester service starts only after the Nginx service is running
+      - nginx # Declare dependency on the Nginx service
+    volumes: # Define volume mappings between the host and the container
+      - ./output:/output # Map the local "output" directory to the "/output" directory inside the container
 
-volumes:
-  output:
+volumes: # Declare named volumes for persistent data
+  output: # Define a named volume called "output" to store test results persistently
