@@ -4,7 +4,7 @@ services: # Define the services (containers) to run
   nginx: # Service name for the Nginx container
     build: # Build configuration for the Nginx service
       context: . # Specify the build context as the current directory
-      dockerfile: nginx.Dockerfile # Specify the Dockerfile to build the Nginx image
+      dockerfile: nginx.Dockerfile 
     ports: # Map ports between the host and the container
       - "8080:8080" # Map port 8080 on the host to port 8080 in the container
       - "8081:8081" # Map port 8081 on the host to port 8081 in the container
