@@ -6,7 +6,7 @@ on:
       - main # Only trigger when pushing to the "main" branch
 
 jobs:
-  build-and-test: # Define a job called "build-and-test"
+  build-and-test: # Define a single job called "build-and-test"
     runs-on: ubuntu-latest # Specify the virtual environment for the job
 
     steps:
