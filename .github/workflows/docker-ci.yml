@@ -34,7 +34,7 @@ jobs:
       - name: Check test results # Check if the tests passed or failed
         run: |
           # Check if the "succeeded" file exists to determine the test results
-          if [ -f output/succeeded ]; then
+          if [ -f /output/succeeded ]; then
             echo "Tests succeeded" # Log success
             echo "succeeded" > artifact.txt # Create an artifact file indicating success
           else
