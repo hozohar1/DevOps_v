@@ -2,7 +2,7 @@
 Home assignment for DevOps Engineer - Intern
 
 <div dir="rtl">
-המשימה כוללת שני קונטיינרים ב-Docker שמנוהלים באמצעות Docker Compose:
+
 This assignment sets up a Docker-based solution with two containers managed via Docker Compose:
 
 **1.Nginx Container:**
