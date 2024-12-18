@@ -3,17 +3,27 @@ Home assignment for DevOps Engineer - Intern
 
 <div dir="rtl">
 המשימה כוללת שני קונטיינרים ב-Docker שמנוהלים באמצעות Docker Compose:
+This assignment sets up a Docker-based solution with two containers managed via Docker Compose:
 
-1. **קונטיינר Nginx**: 
-   - מקשיב לשני פורטים: 8080 ו-8081.
-   - **פורט 8080**: מחזיר דף HTML מותאם אישית עם הודעת הצלחה.
-   - **פורט 8081**: מחזיר שגיאת 404 כדי לדמות תגובה כושלת.
+**1.Nginx Container:**
 
-2. **קונטיינר בדיקות**:
-   - מבצע בדיקות HTTP על שני הקצוות בעזרת ספריית `requests` של Python.
-   - אם השרת ב-port 8080 מחזיר קוד סטטוס 200 והשרת ב-port 8081 מחזיר קוד סטטוס 404, הבדיקה נחשבת להצלחה.
+Listens on two ports:
 
-הרצת **docker-compose up --build**
+*Port 8080: Returns a custom HTML page with a success message.
+
+*Port 8081: Returns an HTTP 404 error to simulate a failed response.
+
+**2.Testing Container:**
+
+Runs a Python script using the requests library to test both endpoints:
+
+Confirms that Port 8080 responds with HTTP status code 200.
+
+Confirms that Port 8081 responds with HTTP status code 404.
+
+Logs the results of the tests.
+
+RUN **docker-compose up --build**
 
 </div>
 
