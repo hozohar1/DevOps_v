@@ -1,5 +1,5 @@
-# F5_DevOps
-Home assignment for DevOps Engineer - Intern
+# DevOps
+Home assignment for DevOps Engineer
 
 <div dir="rtl">
 
