@@ -1,5 +1,5 @@
 # DevOps
-Home assignment for DevOps Engineer
+Assignment for DevOps Engineer
 
 <div dir="rtl">
 
